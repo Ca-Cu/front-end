@@ -38,6 +38,7 @@ const RegisterUser = () => {
                     name="tdoc"
                     label="Tipo"
                     variant="standard"
+                    type="comboBox"
                     style ={{width: '10%'}}
                     />
             <TextField
@@ -49,25 +50,23 @@ const RegisterUser = () => {
                     type="number"
                     />
             </Stack>
-            <br/>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" >
             <TextField
                     required
                     id="nombres"
                     name="nombres"
-                    label="nombre"
+                    label="Nombres completos"
                     variant="outlined"
                     helperText="Nombres completos"
-                    size="small"
                     />
+
             <TextField
                     required
                     id="apellidos"
                     name="apellidos"
-                    label="apellidos"
+                    label="Apellidos completos"
                     variant="outlined"
                     helperText="Apellidos completos"
-                    size="small"
 
                     />
             <TextField
@@ -76,7 +75,95 @@ const RegisterUser = () => {
                     name="fechadenacimiento"
                     type="date"
                     variant="outlined"
-                    size="small"
+                    helperText="Fecha De Nacimiento"
+                    />
+            </Stack>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+            <TextField
+                    required
+                    id="paisdeorigen"
+                    name="paisdeorigen"
+                    label="País de origen"
+                    variant="outlined"
+                    helperText="País de origen"
+                    />
+            <TextField
+                    required
+                    id="departamentodeorigen"
+                    name="departamentodeorigen"
+                    label="Departamento de origen"
+                    variant="outlined"
+                    helperText="Departamento de origen"
+                    />
+            <TextField
+                    required
+                    id="municipiodeorigen"
+                    name="municipiodeorigen"
+                    label="Municipio de origen"
+                    variant="outlined"
+                    helperText="Municipio de origen"
+                    />
+            </Stack>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+            <TextField
+                    required
+                    id="paisderesidencia"
+                    name="paisderesidencia"
+                    label="País de residencia"
+                    variant="outlined"
+                    helperText="País de residencia"
+                    />
+            <TextField
+                    required
+                    id="departamentoderesidencia"
+                    name="departamentoderesidencia"
+                    label="Departamento de residencia"
+                    variant="outlined"
+                    helperText="Departamento de residencia"
+                    />
+            <TextField
+                    required
+                    id="municipioderesidencia"
+                    name="municipioderesidencia"
+                    label="Municipio de residencia"
+                    variant="outlined"
+                    helperText="Municipio de residencia"
+                    />
+            </Stack>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+            <TextField
+                    required
+                    id="estadocivil"
+                    name="estadocivil"
+                    label="Estado civil"
+                    variant="outlined"
+                    helperText="Estado civil"
+                    />
+            <TextField
+                    required
+                    id="niveleducativo"
+                    name="niveleducativo"
+                    label="Nivel educativo"
+                    variant="outlined"
+                    helperText="Nivel educativo"
+                    />
+            </Stack>
+            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+            <TextField
+                    required
+                    id="regimendesalud"
+                    name="regimendesalud"
+                    label="Regimen de salud"
+                    variant="outlined"
+                    helperText="Regimen de salud"
+                    />
+            <TextField
+                    required
+                    id="eps"
+                    name="eps"
+                    label="eps"
+                    variant="outlined"
+                    helperText="eps"
                     />
             </Stack>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
@@ -100,7 +187,7 @@ const RegisterUser = () => {
             </Stack>
             <br/>
             <Box textAlign='center'>
-                <Button type="submit" variant="contained" color="success"endIcon={<SendIcon />}>Confirmar</Button>
+                <Button type="submit" class="button" variant="contained" endIcon={<SendIcon />}>Confirmar</Button>
             </Box>
         </Box>
         </div>

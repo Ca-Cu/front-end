@@ -7,5 +7,8 @@
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   padding:20px;
   margin:20px;
-  max-width:700px;
+  width:800px;
+}
+.button{
+  color: #ff0080
 }
