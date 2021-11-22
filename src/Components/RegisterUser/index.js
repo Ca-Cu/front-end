@@ -5,42 +5,80 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemButton from '@mui/material/ListItemButton';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Collapse from '@mui/material/Collapse';
+import List from '@mui/material/List';
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
 import './registerUser.css';
 
-import axios from 'axios';
 import Swal from "sweetalert2";
-const RegisterUser = () => {
-    const handleSubmit = (event) => {
+const RegisterUser = () =>{
+
+    var url='http://localhost:4567/insertUsuario/';
+    const handleChange = e => {
+        const {name, value } = e.target;
+    };
+    const [open, setOpen] = useState(false);
+
+    let history = useHistory();
+
+    const handleSubmit = (e) => {
         let body={}
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+        var d = new Date();
         body={
                 tdoc:data.get("tdoc"),
                 ndoc:data.get("ndoc"),
                 nombres:data.get("nombres"),
                 apellidos:data.get("apellidos"),
+                fechaderegistro: d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+                                  ("0" + d.getDate()).slice(-2),
+                nacionalidad:data.get("paisdeorigen"),
+                departamentodeorigen:data.get("departamentodeorigen"),
+                municipiodeorigen:data.get("municipiodeorigen"),
+                paisderesidencia:data.get("municipiodeorigen"),
+                departamentoderesidencia:data.get("departamentoderesidencia"),
+                municipioderesidencia:data.get("municipioderesidencia"),
+                direccionderesidencia:data.get("direccionderesidencia"),
                 fechadenacimiento:data.get("fechadenacimiento"),
-                email:data.get("email"),
-                password:data.get("password"),
+                estadocivil:data.get("estadocivil"),
+                niveleducativo:data.get("niveleducativo"),
+                regimendesalud:data.get("regimendesalud"),
+                eps:data.get("eps"),
+                correo:data.get("email"),
+                contraseña:data.get("password"),
                 tipousuario:"Paciente"
+
         }
+        var req = new XMLHttpRequest();
+        req.open('POST', 'http://localhost:4567/insertUsuario/', true);
+        req.body=body;
+        req.send(JSON.stringify(body));
+        e.preventDefault();
+        let redirect =''
+        redirect='/'
+        console.log(redirect)
+        history.push(redirect);
     };
+
 
     return (
         <div className="RegisterComponent">
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="card">
            <Typography variant="h4" align="center" component="h1" gutterBottom>Registro</Typography>
            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
-           <TextField
-                    required
-                    id="tdoc"
-                    name="tdoc"
-                    label="Tipo"
-                    variant="standard"
-                    type="comboBox"
-                    style ={{width: '10%'}}
-                    />
+           <label for="tdoc">Tipo de documento</label>
+             <select id="tdoc" name="tdoc" class="autocomplete">
+               <option value="C.C">C.C</option>
+               <option value="C.E">C.E</option>
+               <option value="T.I">T.I</option>
+             </select>
             <TextField
                     required
                     id="ndoc"
@@ -48,8 +86,10 @@ const RegisterUser = () => {
                     label="numero de Documento"
                     variant="standard"
                     type="number"
+
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" >
             <TextField
                     required
@@ -57,7 +97,6 @@ const RegisterUser = () => {
                     name="nombres"
                     label="Nombres completos"
                     variant="outlined"
-                    helperText="Nombres completos"
                     />
 
             <TextField
@@ -66,7 +105,6 @@ const RegisterUser = () => {
                     name="apellidos"
                     label="Apellidos completos"
                     variant="outlined"
-                    helperText="Apellidos completos"
 
                     />
             <TextField
@@ -75,9 +113,9 @@ const RegisterUser = () => {
                     name="fechadenacimiento"
                     type="date"
                     variant="outlined"
-                    helperText="Fecha De Nacimiento"
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -85,7 +123,6 @@ const RegisterUser = () => {
                     name="paisdeorigen"
                     label="País de origen"
                     variant="outlined"
-                    helperText="País de origen"
                     />
             <TextField
                     required
@@ -93,7 +130,6 @@ const RegisterUser = () => {
                     name="departamentodeorigen"
                     label="Departamento de origen"
                     variant="outlined"
-                    helperText="Departamento de origen"
                     />
             <TextField
                     required
@@ -101,9 +137,9 @@ const RegisterUser = () => {
                     name="municipiodeorigen"
                     label="Municipio de origen"
                     variant="outlined"
-                    helperText="Municipio de origen"
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -111,7 +147,6 @@ const RegisterUser = () => {
                     name="paisderesidencia"
                     label="País de residencia"
                     variant="outlined"
-                    helperText="País de residencia"
                     />
             <TextField
                     required
@@ -119,7 +154,6 @@ const RegisterUser = () => {
                     name="departamentoderesidencia"
                     label="Departamento de residencia"
                     variant="outlined"
-                    helperText="Departamento de residencia"
                     />
             <TextField
                     required
@@ -127,17 +161,23 @@ const RegisterUser = () => {
                     name="municipioderesidencia"
                     label="Municipio de residencia"
                     variant="outlined"
-                    helperText="Municipio de residencia"
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
+            <TextField
+                required
+                id="direccionderesidencia"
+                name="direccionderesidencia"
+                label="Direccion de residencia"
+                variant="outlined"
+            />
             <TextField
                     required
                     id="estadocivil"
                     name="estadocivil"
                     label="Estado civil"
                     variant="outlined"
-                    helperText="Estado civil"
                     />
             <TextField
                     required
@@ -145,9 +185,9 @@ const RegisterUser = () => {
                     name="niveleducativo"
                     label="Nivel educativo"
                     variant="outlined"
-                    helperText="Nivel educativo"
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -155,7 +195,6 @@ const RegisterUser = () => {
                     name="regimendesalud"
                     label="Regimen de salud"
                     variant="outlined"
-                    helperText="Regimen de salud"
                     />
             <TextField
                     required
@@ -163,9 +202,9 @@ const RegisterUser = () => {
                     name="eps"
                     label="eps"
                     variant="outlined"
-                    helperText="eps"
                     />
             </Stack>
+            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -173,7 +212,6 @@ const RegisterUser = () => {
                     name="email"
                     label="correo"
                     variant="outlined"
-                    helperText="correo"
                     />
             <TextField
                     required
@@ -182,12 +220,12 @@ const RegisterUser = () => {
                     label="contraseña"
                     variant="outlined"
                     type="password"
-                    helperText="contraseña segura 7 carácteres"
                     />
             </Stack>
             <br/>
             <Box textAlign='center'>
-                <Button type="submit" class="button" variant="contained" endIcon={<SendIcon />}>Confirmar</Button>
+                <Button  type="submit" class="button" variant="contained" endIcon={<SendIcon />}>Confirmar</Button>
+
             </Box>
         </Box>
         </div>

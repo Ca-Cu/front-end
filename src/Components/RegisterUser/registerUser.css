@@ -1,5 +1,5 @@
 .card{
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 203, 219, 0.55);
   box-shadow: 0 8px 2px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 12px );
   -webkit-backdrop-filter: blur( 12px );
@@ -9,6 +9,29 @@
   margin:20px;
   width:800px;
 }
-.button{
-  color: #ff0080
+.sidebarIcon {
+  margin-right: 15px;
 }
+
+.button{
+    border-radius: 50px;
+    background: #EA899A;
+    border-style: outset;
+    border-color: Teal;
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: #010606;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.button:hover{
+   background: #fff;
+   color: #EA899A;
+}
+
+

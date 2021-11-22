@@ -5,7 +5,7 @@ import "./register.css";
 const Register = () => {
     return (
         <div className="register_box">
-            <Grid container spacing={2}>
+            <Grid container spacing={12}>
                 <Grid item xs={8}>
                     <img src="./register.png" heigh="480px" width="480px">
                         </img>

@@ -28,7 +28,7 @@ const HomeSection = () => {
                             hemos diseñado esta herramienta para ti 
                         </HeroP>
                         <HeroBtnWrapper>
-                            <Button  to='/RegisterAWS'>Registrarse</Button>
+                            <Button  to='/Register'>Registrarse</Button>
                         </HeroBtnWrapper>
                     </HColumn1>
                     <HColumn2>
