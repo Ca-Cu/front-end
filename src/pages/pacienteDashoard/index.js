@@ -16,7 +16,7 @@ const ResidentDashboard = () => {
      }
      useEffect(() => {
         const fetchUser = async () => {
-        if (!currentUser) {
+        if (localStorage.getItem('id')==null || localStorage.getItem('tipousuario')!="Paciente") {
             await Swal.fire(
                 'No está autentificado',
                 'Por favor inicie sesion para usar esta funcionalidad',
@@ -29,14 +29,14 @@ const ResidentDashboard = () => {
         }
         //const res = await axios.get(`/users?username=${username}`);
         console.log("current-------User")
-        console.log(currentUser)
+        console.log(localStorage.getItem('nombres'))
         }
         fetchUser();
     },[]);
 
     return (
         <div className="residentContainer">
-            <Leftbar user={currentUser} changeSection={changeSection}/>
+            <Leftbar user={localStorage.getItem('nombres')} changeSection={changeSection}/>
             <Feed/>
             <Rightbar/>
         </div>

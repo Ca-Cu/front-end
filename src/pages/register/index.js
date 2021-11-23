@@ -2,20 +2,25 @@ import React from 'react'
 import RegisterUser from "../../Components/RegisterUser"
 import Grid from '@mui/material/Grid';
 import "./register.css";
+import Navigbar from '../../Components/Navigbar-landing';
+import Footer from '../../Components/Footer';
 const Register = () => {
     return (
-        <div className="register_box">
-            <Grid container spacing={12}>
-                <Grid item xs={8}>
-                    <img src="./register.png" heigh="480px" width="480px">
-                        </img>
-                </Grid>
-                <Grid item xs={4}>
-                    <div className="some">
-                        <RegisterUser />
+        <div>
+            <Navigbar/>
+            <div class="HeroContainer" id="home">
+                <div class="HeroContent HeroContainer:before">
+                    <div class="HeroRow">
+                        <div class="HColumn1">
+                             <img src="./register.png" heigh="480px" width="480px"></img>
+                        </div>
+                        <div class="HColumn2">
+                            <RegisterUser />
+                        </div>
                     </div>
-                </Grid>
-            </Grid>
+                </div>
+            </div>
+            <Footer/>
         </div>
     )
 }

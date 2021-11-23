@@ -15,9 +15,17 @@ import List from '@mui/material/List';
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import './registerUser.css';
-
 import Swal from "sweetalert2";
+
+const bcrypt = require("bcryptjs");
+const rondas = 15;
 const RegisterUser = () =>{
+
+    localStorage.removeItem('id');
+    localStorage.removeItem('nombres');
+    localStorage.removeItem('apellidos');
+    localStorage.removeItem('tipousuario');
+    localStorage.removeItem('correo');
 
     var url='http://localhost:4567/insertUsuario/';
     const handleChange = e => {
@@ -32,39 +40,42 @@ const RegisterUser = () =>{
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         var d = new Date();
-        body={
-                tdoc:data.get("tdoc"),
-                ndoc:data.get("ndoc"),
-                nombres:data.get("nombres"),
-                apellidos:data.get("apellidos"),
-                fechaderegistro: d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-                                  ("0" + d.getDate()).slice(-2),
-                nacionalidad:data.get("paisdeorigen"),
-                departamentodeorigen:data.get("departamentodeorigen"),
-                municipiodeorigen:data.get("municipiodeorigen"),
-                paisderesidencia:data.get("municipiodeorigen"),
-                departamentoderesidencia:data.get("departamentoderesidencia"),
-                municipioderesidencia:data.get("municipioderesidencia"),
-                direccionderesidencia:data.get("direccionderesidencia"),
-                fechadenacimiento:data.get("fechadenacimiento"),
-                estadocivil:data.get("estadocivil"),
-                niveleducativo:data.get("niveleducativo"),
-                regimendesalud:data.get("regimendesalud"),
-                eps:data.get("eps"),
-                correo:data.get("email"),
-                contraseña:data.get("password"),
-                tipousuario:"Paciente"
+        bcrypt.hash(data.get("password"), rondas, (err, palabraSecretaEncriptada) => {
+                body={
+                        tdoc:data.get("tdoc"),
+                        ndoc:data.get("ndoc"),
+                        nombres:data.get("nombres"),
+                        apellidos:data.get("apellidos"),
+                        fechaderegistro: d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+                                          ("0" + d.getDate()).slice(-2),
+                        nacionalidad:data.get("paisdeorigen"),
+                        departamentodeorigen:data.get("departamentodeorigen"),
+                        municipiodeorigen:data.get("municipiodeorigen"),
+                        paisderesidencia:data.get("municipiodeorigen"),
+                        departamentoderesidencia:data.get("departamentoderesidencia"),
+                        municipioderesidencia:data.get("municipioderesidencia"),
+                        direccionderesidencia:data.get("direccionderesidencia"),
+                        fechadenacimiento:data.get("fechadenacimiento"),
+                        estadocivil:data.get("estadocivil"),
+                        niveleducativo:data.get("niveleducativo"),
+                        regimendesalud:data.get("regimendesalud"),
+                        eps:data.get("eps"),
+                        correo:data.get("email"),
+                        contraseña:palabraSecretaEncriptada,
+                        tipousuario:"Paciente"
 
-        }
-        var req = new XMLHttpRequest();
-        req.open('POST', 'http://localhost:4567/insertUsuario/', true);
-        req.body=body;
-        req.send(JSON.stringify(body));
-        e.preventDefault();
-        let redirect =''
-        redirect='/'
-        console.log(redirect)
-        history.push(redirect);
+                };
+                var req = new XMLHttpRequest();
+                req.open('POST', 'http://localhost:4567/insertUsuario', true);
+                req.body=body;
+                req.send(JSON.stringify(body));
+                e.preventDefault();
+                let redirect =''
+                redirect='/'
+                console.log(redirect)
+                history.push(redirect);
+        })
+
     };
 
 
@@ -84,11 +95,18 @@ const RegisterUser = () =>{
                     id="ndoc"
                     name="ndoc"
                     label="numero de Documento"
-                    variant="standard"
+                    variant="outlined"
                     type="number"
-
                     />
-            </Stack>
+            <label for="estadocivil">Estado civil</label>
+            <select id="estadocivil" name="estadocivil" class="autocomplete">
+               <option value="Casado">Casado</option>
+               <option value="Divorciado">Divorciado</option>
+               <option value="Soltero">Soltero</option>
+               <option value="Unión libre">Unión libre</option>
+               <option value="Viudo">Viudo</option>
+             </select>
+             </Stack>
             <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" >
             <TextField
@@ -174,28 +192,22 @@ const RegisterUser = () =>{
             />
             <TextField
                     required
-                    id="estadocivil"
-                    name="estadocivil"
-                    label="Estado civil"
-                    variant="outlined"
-                    />
-            <TextField
-                    required
                     id="niveleducativo"
                     name="niveleducativo"
                     label="Nivel educativo"
                     variant="outlined"
                     />
+            <TextField
+                required
+                id="regimendesalud"
+                name="regimendesalud"
+                label="Regimen de salud"
+                variant="outlined"
+                />
             </Stack>
             <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
-            <TextField
-                    required
-                    id="regimendesalud"
-                    name="regimendesalud"
-                    label="Regimen de salud"
-                    variant="outlined"
-                    />
+
             <TextField
                     required
                     id="eps"
@@ -203,9 +215,6 @@ const RegisterUser = () =>{
                     label="eps"
                     variant="outlined"
                     />
-            </Stack>
-            <br/>
-            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
                     id="email"
@@ -231,5 +240,4 @@ const RegisterUser = () =>{
         </div>
     )
 }
-
 export default RegisterUser

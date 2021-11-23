@@ -2,7 +2,7 @@ import styled from  'styled-components';
 import { Link as LinkR } from 'react-router-dom';
 import {MdKeyboardArrowRight,MdArrowForward} from 'react-icons/md';
 export const HeroContainer = styled.div`
-    background: #fff;
+    background: #622D6F;
     display: flex;
     justify-content: center;
     position: relative;
@@ -10,7 +10,7 @@ export const HeroContainer = styled.div`
     :before{
         content: '';
         position:absolute;
-        top: 0;
+        top: 0 ;
         left: 0;
         right: 0;
         bottom: 0;
@@ -39,9 +39,9 @@ export const HeroContent =styled.div`
 
 export const HeroContentWrapper = styled.div`
     background: linear-gradient(
-        45deg, 
-        #5757D9 0%,
-        #21D9F7 100%
+        45deg,
+        rgba(255, 203, 219)  0%,
+        #EA899A 100%
     ),
     linear-gradient(
         180deg,
@@ -122,7 +122,7 @@ export const ArrowRight=styled(MdKeyboardArrowRight)`
 `;
 export const Button =styled(LinkR)`
     border-radius: 50px;
-    background: #434e8f;
+    background: rgba(255, 203, 219);
     border-style: outset;
     border-color: Teal;
     white-space: nowrap;

@@ -15,6 +15,11 @@ import {
 import './LoginFormElements.css';
 import people from './../../img/background.jpg';
 const HomeSection = () => {
+    localStorage.removeItem('id');
+    localStorage.removeItem('nombres');
+    localStorage.removeItem('apellidos');
+    localStorage.removeItem('tipousuario');
+    localStorage.removeItem('correo');
     return (
         <HeroContainer id="home">   
             <HeroContent>

@@ -61,10 +61,10 @@ export default function Leftbar({changeSection}) {
     setOpen(!open);
   };
   const user ={
-    nombres:"prueba",
-    apellidos:"prueba",
-    email:"correo@correo.com",
-    tipousuario:"Medico"
+    nombres:localStorage.getItem('nombres'),
+    apellidos:localStorage.getItem('apellidos'),
+    email:localStorage.getItem('correo'),
+    tipousuario:localStorage.getItem('tipousuario')
   }
   return (
     <div className="drawer" >

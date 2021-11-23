@@ -3,8 +3,8 @@ import './App.css';
 import {BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 
 import Home from './pages/home';
-import AdminDashBoard from './pages/adminDashboard';
-import ResidentDashBoard from './pages/residentDashoard';
+import DoctorDashboard from './pages/doctorDashboard';
+import PacienteDashBoard from './pages/pacienteDashoard';
 import Login from './pages/login';
 import Register from './pages/register';
 import RegisterUserAWS from './Components/RegisterUserAWS';
@@ -19,11 +19,11 @@ function App() {
         <Route exact path='/Home'>
           <Home/>
         </Route>
-        <Route exact path='/AdminDashboard/'>
-          <AdminDashBoard/>
+        <Route exact path='/DoctorDashboard/'>
+          <DoctorDashboard/>
         </Route>
-        <Route exact path='/ResidentDashboard/'>
-          <ResidentDashBoard/>
+        <Route exact path='/PacienteDashboard/'>
+          <PacienteDashBoard/>
         </Route>
         <Route exact path='/Login' >
           <Login/>

@@ -1,8 +1,60 @@
 .register_box{
+    background: #622D6F;
     margin: 120px;
     max-width: 600px;
     align-content:center;
 }
 .some{
     width:500px;
+}
+
+.HeroContainer{
+    margin-top: -80px;
+    background: #622D6F;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index:1;
+
+}
+.HeroContainer:before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index:2;
+}
+
+.HeroContent{
+    z-index:3;
+    padding-top: 190px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.HeroRow{
+    display:grid;
+    grid-auto-columns: minmax(auto,1fr);
+    align-items: center;
+    grid-template-areas: 'col1 col2';
+    @media screen and (max-width: 768px){
+        grid-template-areas:  'col1 col1' 'col2 col2';
+
+        }
+}
+
+.HColumn1{
+    padding-right: 10px;
+    margin-bottom: 15px;
+    padding: 0 15px;
+    grid-area: col1;
+}
+
+.HColumn2{
+    grid-area:col2;
+    margin-left: -80px;
 }
