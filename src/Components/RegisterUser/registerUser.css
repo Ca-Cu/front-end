@@ -1,5 +1,5 @@
 .card{
-  background: rgba(255, 203, 219, 0.55);
+  background:  #fff  ;
   box-shadow: 0 8px 2px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 12px );
   -webkit-backdrop-filter: blur( 12px );
@@ -16,7 +16,7 @@
 
 .button{
     border-radius: 50px;
-    background: #EA899A;
+    background: #7f8d8e ;
     border-style: outset;
     border-color: Teal;
     white-space: nowrap;
@@ -32,7 +32,7 @@
 
 .button:hover{
    background: #fff;
-   color: #EA899A;
+   color: #000000 ;
 }
 
 

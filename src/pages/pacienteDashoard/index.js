@@ -6,7 +6,7 @@ import React,{useState,useEffect} from 'react'
 import RegisterUser from  '../../Components/RegisterUser';
 import { Users } from "../../testData";
 import Swal from "sweetalert2";
-import './resident.css';
+import './paciente.css';
 
 const ResidentDashboard = () => {
     const [currentUser,setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));    
@@ -48,7 +48,9 @@ const ResidentDashboard = () => {
     return (
         <div className="residentContainer">
             <Leftbar changeSection={changeSection}/>
-            {switchSection(section)}
+            <div className="ss">
+                {switchSection(section)}
+            </div>
             <Rightbar/>
         </div>
     )

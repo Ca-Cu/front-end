@@ -141,7 +141,7 @@ const Login=()=>{
                             <br></br>
                             <br></br>
                         </div>
-                        <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                        <Button type='submit' class="boton" variant="contained" style={btnstyle} fullWidth>Sign in</Button>
                     </Paper>
                 </form>
             </Grid>
