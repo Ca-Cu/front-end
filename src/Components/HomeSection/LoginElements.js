@@ -79,7 +79,7 @@ export const HColumn2 = styled.div`
     grid-area:col2;
 `;
 export const HeroH1 = styled.h1`
-    color: #fff;
+    color: #622D6F;
     font-size: 60px;
     text-align: left;
     @media screen  and (max-width:750px){
@@ -91,8 +91,8 @@ export const HeroH1 = styled.h1`
 `;
 
 export const HeroP = styled.p`
-    color: #fff;
-    font-size: 18px;
+    color: #622D6F;
+    font-size: 20px;
     text-align: left;
     max-width: 600px;
     @media screen  and (max-width:750px){

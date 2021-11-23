@@ -2,6 +2,7 @@ import Leftbar from '../../Components/Leftbar';
 import Feed from '../../Components/Feed';
 import RegisterUser from  '../../Components/RegisterUser';
 import Rightbar from '../../Components/Rightbar';
+import DropForm from '../../Components/Conjuntos/DropForm';
 import React,{useState,useEffect,useRef} from 'react'
 import { Users } from "../../testData";
 import './admin.css';
@@ -19,9 +20,10 @@ const AdminDashboard = () => {
     const switchSection = (param) =>{
         switch(param) {
             case 'crearUsuario':
+              localStorage.setItem('change','yes');
               return <RegisterUser/>;
             case 'Feed':
-                    return <Feed/>;
+              return <Feed/>;
             default:
               return <Feed/>;
           }
@@ -29,8 +31,9 @@ const AdminDashboard = () => {
     return (
         <div className="adminContainer">
             <Leftbar user={currentUser} changeSection={changeSection}/>
-            {switchSection(section)
-            }
+            <div class="a">
+                {switchSection(section)}
+            </div>
             <Rightbar/>   
         </div>
     )

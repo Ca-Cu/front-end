@@ -20,13 +20,26 @@ import Swal from "sweetalert2";
 const bcrypt = require("bcryptjs");
 const rondas = 15;
 const RegisterUser = () =>{
+    var noEdita;
+    var tipodocumento="dsa"
+    console.log((window.location.href).split("/")[3]);
 
-    localStorage.removeItem('id');
-    localStorage.removeItem('nombres');
-    localStorage.removeItem('apellidos');
-    localStorage.removeItem('tipousuario');
-    localStorage.removeItem('correo');
-
+    if((window.location.href).split("/")[3]!='DoctorDashboard' && (window.location.href).split("/")[3]!='PacienteDashboard'){
+        localStorage.removeItem('id');
+        localStorage.removeItem('nombres');
+        localStorage.removeItem('apellidos');
+        localStorage.removeItem('tipousuario');
+        localStorage.removeItem('correo');
+        noEdita=false;
+    }else if((window.location.href).split("/")[3]=='DoctorDashboard' || (window.location.href).split("/")[3]=='PacienteDashboard'){
+        var url = 'http://localhost:4567/getUsuarioById?id='+localStorage.getItem('id');
+        axios.get(url, {
+            responseType: "json",
+        }).then((response) => {
+            console.log(response.data);
+        });
+        noEdita=true;
+    }
     var url='http://localhost:4567/insertUsuario/';
     const handleChange = e => {
         const {name, value } = e.target;
@@ -82,10 +95,10 @@ const RegisterUser = () =>{
     return (
         <div className="RegisterComponent">
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="card">
-           <Typography variant="h4" align="center" component="h1" gutterBottom>Registro</Typography>
+           <Typography variant="h4" align="center" component="h1" gutterBottom></Typography>
            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
            <label for="tdoc">Tipo de documento</label>
-             <select id="tdoc" name="tdoc" class="autocomplete">
+             <select id="tdoc" name="tdoc" class="autocomplete" disabled="disabled" default="true">
                <option value="C.C">C.C</option>
                <option value="C.E">C.E</option>
                <option value="T.I">T.I</option>
@@ -97,9 +110,13 @@ const RegisterUser = () =>{
                     label="numero de Documento"
                     variant="outlined"
                     type="number"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             <label for="estadocivil">Estado civil</label>
-            <select id="estadocivil" name="estadocivil" class="autocomplete">
+            <select id="estadocivil" name="estadocivil" class="autocomplete" disabled="disabled" default="true">
                <option value="Casado">Casado</option>
                <option value="Divorciado">Divorciado</option>
                <option value="Soltero">Soltero</option>
@@ -115,6 +132,10 @@ const RegisterUser = () =>{
                     name="nombres"
                     label="Nombres completos"
                     variant="outlined"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
 
             <TextField
@@ -123,7 +144,10 @@ const RegisterUser = () =>{
                     name="apellidos"
                     label="Apellidos completos"
                     variant="outlined"
-
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             <TextField
                     required
@@ -131,6 +155,10 @@ const RegisterUser = () =>{
                     name="fechadenacimiento"
                     type="date"
                     variant="outlined"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             </Stack>
             <br/>
@@ -141,6 +169,10 @@ const RegisterUser = () =>{
                     name="paisdeorigen"
                     label="País de origen"
                     variant="outlined"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             <TextField
                     required
@@ -148,6 +180,10 @@ const RegisterUser = () =>{
                     name="departamentodeorigen"
                     label="Departamento de origen"
                     variant="outlined"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             <TextField
                     required
@@ -155,6 +191,10 @@ const RegisterUser = () =>{
                     name="municipiodeorigen"
                     label="Municipio de origen"
                     variant="outlined"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             </Stack>
             <br/>
@@ -221,6 +261,7 @@ const RegisterUser = () =>{
                     name="email"
                     label="correo"
                     variant="outlined"
+                    type="email"
                     />
             <TextField
                     required

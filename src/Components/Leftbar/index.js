@@ -84,7 +84,7 @@ export default function Leftbar({changeSection}) {
           </div>
           <Divider />
           <List>
-            {user.tipousuario=="Medico"?
+            {localStorage.getItem('tipousuario')=="Doctor" || localStorage.getItem('tipousuario')=="Paciente"?
               <div>
                 <ListItemButton name="Configuracion" className="Configuracion" onClick={handleClick}>
                   <ListItemIcon><SettingsIcon className="sidebarIcon"/> </ListItemIcon>
@@ -93,7 +93,7 @@ export default function Leftbar({changeSection}) {
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                      <ListItemButton name="CrearUsuario" className="crearUsuario" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
+                      <ListItemButton name="Editarperfil" className="Editarperfil" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
                         <ListItemIcon><PersonAddIcon className="sidebarIcon"/> </ListItemIcon>
                         <ListItemText>CrearUsuario</ListItemText>
                       </ListItemButton>
@@ -106,7 +106,7 @@ export default function Leftbar({changeSection}) {
             }
             <ListItemButton name="Dashboard" className="Dashboard" onClick={changeSection('Feed') }>
               <ListItemIcon><EmojiEmotionsIcon className="sidebarIcon"/> </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText>Dashbddddddoard</ListItemText>
             </ListItemButton>
           </List>          
         </ul>

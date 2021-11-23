@@ -3,13 +3,14 @@ import Feed from '../../Components/Feed';
 import Rightbar from '../../Components/Rightbar';
 import {useParams} from 'react-router';
 import React,{useState,useEffect} from 'react'
+import RegisterUser from  '../../Components/RegisterUser';
 import { Users } from "../../testData";
 import Swal from "sweetalert2";
 import './resident.css';
 
 const ResidentDashboard = () => {
     const [currentUser,setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));    
-    const [section, setSection] = useState('Feed');
+    const [section, setSection] = useState('');
     const changeSection = some => () =>{
         console.log(section)
         setSection(some)
@@ -23,7 +24,6 @@ const ResidentDashboard = () => {
                 'error'
             )
             // eliminar localStorage
-            localStorage.clear();
             // redireccionar a login
             window.location.replace("/login")
         }
@@ -33,11 +33,22 @@ const ResidentDashboard = () => {
         }
         fetchUser();
     },[]);
+    const switchSection = (param) =>{
+        switch(param) {
+            case 'crearUsuario':
+              localStorage.setItem('change','yes');
+              return <RegisterUser/>;
+            case 'Feed':
+              return <Feed/>;
+            default:
+              return <Feed/>;
+         }
+     }
 
     return (
         <div className="residentContainer">
-            <Leftbar user={localStorage.getItem('nombres')} changeSection={changeSection}/>
-            <Feed/>
+            <Leftbar changeSection={changeSection}/>
+            {switchSection(section)}
             <Rightbar/>
         </div>
     )
