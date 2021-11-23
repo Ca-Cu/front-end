@@ -95,7 +95,7 @@ export default function Leftbar({changeSection}) {
                     <List component="div" disablePadding>
                       <ListItemButton name="Editarperfil" className="Editarperfil" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
                         <ListItemIcon><PersonAddIcon className="sidebarIcon"/> </ListItemIcon>
-                        <ListItemText>CrearUsuario</ListItemText>
+                        <ListItemText>Editar perfil</ListItemText>
                       </ListItemButton>
                     </List>
                 </Collapse>

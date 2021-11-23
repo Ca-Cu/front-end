@@ -98,7 +98,7 @@ const RegisterUser = () =>{
            <Typography variant="h4" align="center" component="h1" gutterBottom></Typography>
            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
            <label for="tdoc">Tipo de documento</label>
-             <select id="tdoc" name="tdoc" class="autocomplete" disabled="disabled" default="true">
+             <select id="tdoc" name="tdoc" class="autocomplete">
                <option value="C.C">C.C</option>
                <option value="C.E">C.E</option>
                <option value="T.I">T.I</option>
@@ -116,7 +116,7 @@ const RegisterUser = () =>{
                     }}
                     />
             <label for="estadocivil">Estado civil</label>
-            <select id="estadocivil" name="estadocivil" class="autocomplete" disabled="disabled" default="true">
+            <select id="estadocivil" name="estadocivil" class="autocomplete">
                <option value="Casado">Casado</option>
                <option value="Divorciado">Divorciado</option>
                <option value="Soltero">Soltero</option>
