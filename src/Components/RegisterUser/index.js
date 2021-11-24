@@ -24,14 +24,14 @@ const RegisterUser = () =>{
     var tipodocumento="dsa"
     console.log((window.location.href).split("/")[3]);
 
-    if((window.location.href).split("/")[3]!='DoctorDashboard' && (window.location.href).split("/")[3]!='PacienteDashboard'){
+    if((window.location.href).split("/")[3]!='Dashboard'){
         localStorage.removeItem('id');
         localStorage.removeItem('nombres');
         localStorage.removeItem('apellidos');
         localStorage.removeItem('tipousuario');
         localStorage.removeItem('correo');
         noEdita=false;
-    }else if((window.location.href).split("/")[3]=='DoctorDashboard' || (window.location.href).split("/")[3]=='PacienteDashboard'){
+    }else if((window.location.href).split("/")[3]=='Dashboard'){
         var url = 'http://localhost:4567/getUsuarioById?id='+localStorage.getItem('id');
         axios.get(url, {
             responseType: "json",

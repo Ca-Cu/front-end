@@ -1,0 +1,26 @@
+.residentContainer{
+    position: relative;
+    background: #e0dce0;
+    display: flex;
+    width: 100%;
+}
+.superior{
+    position:absolute;
+    background: #e0dce0;
+    width:80%;
+    height:80px;
+}
+.estado{
+
+}
+.lateral{
+    width: 20%;
+}
+.padre{
+  margin-top:20px;
+
+  position: absolute;
+    top: 50% ;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}

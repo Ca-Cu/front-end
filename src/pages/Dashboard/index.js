@@ -1,14 +1,18 @@
 import Leftbar from '../../Components/Leftbar';
 import Feed from '../../Components/Feed';
-import Rightbar from '../../Components/Rightbar';
+import Home from '../home';
+import Footer from '../../Components/Footer';
 import {useParams} from 'react-router';
 import React,{useState,useEffect} from 'react'
 import RegisterUser from  '../../Components/RegisterUser';
 import { Users } from "../../testData";
 import Swal from "sweetalert2";
-import './paciente.css';
+import { useHistory } from 'react-router-dom';
+import Navbar from  '../../Components/Navigbar';
+import './dashboard.css';
 
 const ResidentDashboard = () => {
+    let history = useHistory();
     const [currentUser,setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));    
     const [section, setSection] = useState('');
     const changeSection = some => () =>{
@@ -36,22 +40,39 @@ const ResidentDashboard = () => {
     const switchSection = (param) =>{
         switch(param) {
             case 'crearUsuario':
-              localStorage.setItem('change','yes');
+              localStorage.setItem('ubicacion','Editar usuario');
               return <RegisterUser/>;
             case 'Feed':
+              localStorage.setItem('ubicacion','Información de cancer de cuello uterino');
               return <Feed/>;
+            case 'Home':
+              console.log("/")
+              history.push("/");
             default:
               return <Feed/>;
          }
      }
 
     return (
-        <div className="residentContainer">
-            <Leftbar changeSection={changeSection}/>
-            <div className="ss">
-                {switchSection(section)}
+        <div>
+            <div className="residentContainer">
+                <div className="lateral">
+                    <Leftbar changeSection={changeSection}/>
+                </div>
+                <div >
+                    <div className="superior">
+                        <Navbar/>
+                    </div>
+                    <div className="padre">
+                        <div className="estado">
+                            {switchSection(section)}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <Rightbar/>
+            <div>
+                <Footer/>
+            </div>
         </div>
     )
 }

@@ -4,10 +4,35 @@ import "./feed.css";
 
 const Feed = () => {
     return (
-    <div className="feed">
-        <div className="feedWrapper">
+    <div className="carta">
             Dashboard
-        </div>
+            s
+            a
+            h
+            d
+            d
+            d
+            dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+             dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+              dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+               dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                 dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                  dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                   dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                    dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                     dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                      dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                       dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                        dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                         dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                          dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                           dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                             dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
+
     </div>
     )
 }

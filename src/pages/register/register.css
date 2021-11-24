@@ -49,6 +49,7 @@
 }
 
 .HColumn1{
+
     padding-right: 10px;
     margin-bottom: 15px;
     padding: 0 15px;
@@ -57,5 +58,5 @@
 
 .HColumn2{
     grid-area:col2;
-    margin-left: -80px;
+    margin-left: -160px;
 }

@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 
 import Home from './pages/home';
 import DoctorDashboard from './pages/doctorDashboard';
-import PacienteDashBoard from './pages/pacienteDashoard';
+import PacienteDashBoard from './pages/Dashboard';
 import Login from './pages/login';
 import Register from './pages/register';
 import RegisterUserAWS from './Components/RegisterUserAWS';
@@ -22,7 +22,7 @@ function App() {
         <Route exact path='/DoctorDashboard/'>
           <DoctorDashboard/>
         </Route>
-        <Route exact path='/PacienteDashboard/'>
+        <Route exact path='/Dashboard/'>
           <PacienteDashBoard/>
         </Route>
         <Route exact path='/Login' >

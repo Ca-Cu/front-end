@@ -15,7 +15,7 @@ const Footer = () => {
             <FooterWrap>
                 <SocialMedia>
                     <SocialMediaWrap>
-                        <SocialLogo to='/'>Cacu</SocialLogo>
+                        <SocialLogo >Cacu</SocialLogo>
                         <WebSiteRight>Ana Maria Salazar Bohorquez,
                              Juan Camilo Posso Guevara, Richard Santiago Urrea Garcia © {new Date().getFullYear()} All rights  reserved</WebSiteRight>
                     </SocialMediaWrap>

@@ -75,12 +75,7 @@ const Login=()=>{
                             localStorage.setItem('tipousuario',response.data["tipousuario"]);
                             localStorage.setItem('correo',data.get("user"));
                             e.preventDefault();
-                            let redirect =''
-                            if(response.data["tipousuario"] == "Paciente"){
-                                redirect='/PacienteDashboard/';
-                            }else if(response.data["tipousuario"] == "Doctor"){
-                                redirect='/DoctorDashboard/';
-                            }
+                            let redirect ='/Dashboard/'
                             console.log(redirect)
                             history.push(redirect);
                         });

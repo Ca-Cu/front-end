@@ -12,8 +12,9 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import SettingsIcon from '@mui/icons-material/Settings';
 import List from '@mui/material/List';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import Edit from '@mui/icons-material/Edit';
+import Exit from '@mui/icons-material/ExitToApp';
+import Feedback from '@mui/icons-material/Feedback';
 
 import {
   Bookmark
@@ -84,29 +85,34 @@ export default function Leftbar({changeSection}) {
           </div>
           <Divider />
           <List>
+            <ListItemButton name="Configuracion" className="Configuracion" onClick={handleClick}>
+              <ListItemIcon><SettingsIcon className="sidebarIcon"/> </ListItemIcon>
+              <ListItemText>Configuracion</ListItemText>
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton name="Editarperfil" className="Editarperfil" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
+                    <ListItemIcon><Edit className="sidebarIcon"/> </ListItemIcon>
+                    <ListItemText>Editar perfil</ListItemText>
+                  </ListItemButton>
+                </List>
+            </Collapse>
             {localStorage.getItem('tipousuario')=="Doctor" || localStorage.getItem('tipousuario')=="Paciente"?
               <div>
-                <ListItemButton name="Configuracion" className="Configuracion" onClick={handleClick}>
-                  <ListItemIcon><SettingsIcon className="sidebarIcon"/> </ListItemIcon>
-                  <ListItemText>Configuracion</ListItemText>
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                      <ListItemButton name="Editarperfil" className="Editarperfil" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
-                        <ListItemIcon><PersonAddIcon className="sidebarIcon"/> </ListItemIcon>
-                        <ListItemText>Editar perfil</ListItemText>
-                      </ListItemButton>
-                    </List>
-                </Collapse>
+
                 
               </div>
               :
               <div></div>
             }
             <ListItemButton name="Dashboard" className="Dashboard" onClick={changeSection('Feed') }>
-              <ListItemIcon><EmojiEmotionsIcon className="sidebarIcon"/> </ListItemIcon>
-              <ListItemText>Dashbddddddoard</ListItemText>
+              <ListItemIcon><Feedback className="sidebarIcon"/> </ListItemIcon>
+              <ListItemText>Feed</ListItemText>
+            </ListItemButton>
+            <ListItemButton name="Exit" className="Exit" onClick={changeSection('Home') }>
+              <ListItemIcon><Exit className="sidebarIcon"/> </ListItemIcon>
+              <ListItemText>Exit</ListItemText>
             </ListItemButton>
           </List>          
         </ul>

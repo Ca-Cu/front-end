@@ -31,10 +31,9 @@ export const SocialMediaWrap = styled.div`
     }
 `;
 
-export const SocialLogo = styled(Link)`
+export const SocialLogo = styled.big`
     color: #fff;
     justify-self: start;
-    cursor:pointer;
     text-decoration: none;
     font-size: 1.5 rem;
     display:flex;
