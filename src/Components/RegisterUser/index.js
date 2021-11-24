@@ -21,7 +21,25 @@ const bcrypt = require("bcryptjs");
 const rondas = 15;
 const RegisterUser = () =>{
     var noEdita;
-    var tipodocumento="dsa"
+    var disabled;
+    var tdoc=""
+    var documento=""
+    var estadocivil=""
+    var nombres="";
+    var apellidos="";
+    var fechadenacimiento="";
+    var paisdeorigen="";
+    var departamentodeorigen="";
+    var municipiodeorigen="";
+    var paisderesidencia="";
+    var departamentoderesidencia="";
+    var municipioderesidencia="";
+    var direccionderesidencia="";
+    var niveleducativo="";
+    var regimendesalud="";
+    var eps="";
+    var email="";
+    var password="";
     console.log((window.location.href).split("/")[3]);
 
     if((window.location.href).split("/")[3]!='Dashboard'){
@@ -31,14 +49,20 @@ const RegisterUser = () =>{
         localStorage.removeItem('tipousuario');
         localStorage.removeItem('correo');
         noEdita=false;
+        disabled=false;
     }else if((window.location.href).split("/")[3]=='Dashboard'){
         var url = 'http://localhost:4567/getUsuarioById?id='+localStorage.getItem('id');
         axios.get(url, {
             responseType: "json",
         }).then((response) => {
             console.log(response.data);
+            apellidos=response.data["apellidos"]
+            console.log(apellidos);
+
         });
+
         noEdita=true;
+        disabled="disabled";
     }
     var url='http://localhost:4567/insertUsuario/';
     const handleChange = e => {
@@ -98,7 +122,7 @@ const RegisterUser = () =>{
            <Typography variant="h4" align="center" component="h1" gutterBottom></Typography>
            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
            <label for="tdoc">Tipo de documento</label>
-             <select id="tdoc" name="tdoc" class="autocomplete">
+             <select id="tdoc" name="tdoc" class="autocomplete" disabled={disabled}>
                <option value="C.C">C.C</option>
                <option value="C.E">C.E</option>
                <option value="T.I">T.I</option>
@@ -116,7 +140,7 @@ const RegisterUser = () =>{
                     }}
                     />
             <label for="estadocivil">Estado civil</label>
-            <select id="estadocivil" name="estadocivil" class="autocomplete">
+            <select id="estadocivil" name="estadocivil" class="autocomplete" disabled={disabled}>
                <option value="Casado">Casado</option>
                <option value="Divorciado">Divorciado</option>
                <option value="Soltero">Soltero</option>
@@ -148,6 +172,7 @@ const RegisterUser = () =>{
                         readOnly: noEdita,
                         disabled: noEdita,
                     }}
+                    value={apellidos}
                     />
             <TextField
                     required
@@ -262,6 +287,10 @@ const RegisterUser = () =>{
                     label="correo"
                     variant="outlined"
                     type="email"
+                    inputProps={{
+                        readOnly: noEdita,
+                        disabled: noEdita,
+                    }}
                     />
             <TextField
                     required
