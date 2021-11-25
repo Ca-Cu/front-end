@@ -21,7 +21,7 @@ const ResidentDashboard = () => {
      }
      useEffect(() => {
         const fetchUser = async () => {
-        if (localStorage.getItem('id')==null || localStorage.getItem('tipousuario')!="Paciente") {
+        if (localStorage.getItem('id')==null || localStorage.getItem('tipousuario')==null) {
             await Swal.fire(
                 'No está autentificado',
                 'Por favor inicie sesion para usar esta funcionalidad',
@@ -49,6 +49,7 @@ const ResidentDashboard = () => {
               console.log("/")
               history.push("/");
             default:
+              localStorage.setItem('ubicacion','Información de cancer de cuello uterino');
               return <Feed/>;
          }
      }

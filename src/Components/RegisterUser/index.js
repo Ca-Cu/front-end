@@ -78,30 +78,31 @@ const RegisterUser = () =>{
         const data = new FormData(e.currentTarget);
         var d = new Date();
         bcrypt.hash(data.get("password"), rondas, (err, palabraSecretaEncriptada) => {
+            body={}
+            if((window.location.href).split("/")[3]!='Dashboard'){
                 body={
-                        tdoc:data.get("tdoc"),
-                        ndoc:data.get("ndoc"),
-                        nombres:data.get("nombres"),
-                        apellidos:data.get("apellidos"),
-                        fechaderegistro: d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
-                                          ("0" + d.getDate()).slice(-2),
-                        nacionalidad:data.get("paisdeorigen"),
-                        departamentodeorigen:data.get("departamentodeorigen"),
-                        municipiodeorigen:data.get("municipiodeorigen"),
-                        paisderesidencia:data.get("municipiodeorigen"),
-                        departamentoderesidencia:data.get("departamentoderesidencia"),
-                        municipioderesidencia:data.get("municipioderesidencia"),
-                        direccionderesidencia:data.get("direccionderesidencia"),
-                        fechadenacimiento:data.get("fechadenacimiento"),
-                        estadocivil:data.get("estadocivil"),
-                        niveleducativo:data.get("niveleducativo"),
-                        regimendesalud:data.get("regimendesalud"),
-                        eps:data.get("eps"),
-                        correo:data.get("email"),
-                        contraseña:palabraSecretaEncriptada,
-                        tipousuario:"Paciente"
-
-                };
+                    tdoc:data.get("tdoc"),
+                    ndoc:data.get("ndoc"),
+                    nombres:data.get("nombres"),
+                    apellidos:data.get("apellidos"),
+                    fechaderegistro: d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+                                      ("0" + d.getDate()).slice(-2),
+                    nacionalidad:data.get("paisdeorigen"),
+                    departamentodeorigen:data.get("departamentodeorigen"),
+                    municipiodeorigen:data.get("municipiodeorigen"),
+                    paisderesidencia:data.get("paisderesidencia"),
+                    departamentoderesidencia:data.get("departamentoderesidencia"),
+                    municipioderesidencia:data.get("municipioderesidencia"),
+                    direccionderesidencia:data.get("direccionderesidencia"),
+                    fechadenacimiento:data.get("fechadenacimiento"),
+                    estadocivil:data.get("estadocivil"),
+                    niveleducativo:data.get("niveleducativo"),
+                    regimendesalud:data.get("regimendesalud"),
+                    eps:data.get("eps"),
+                    correo:data.get("email"),
+                    contraseña:palabraSecretaEncriptada,
+                    tipousuario:"Paciente"
+                }
                 var req = new XMLHttpRequest();
                 req.open('POST', 'http://localhost:4567/insertUsuario', true);
                 req.body=body;
@@ -111,6 +112,26 @@ const RegisterUser = () =>{
                 redirect='/'
                 console.log(redirect)
                 history.push(redirect);
+            }
+            else if((window.location.href).split("/")[3]=='Dashboard'){
+                body={
+                    id:localStorage.getItem("id"),
+                    paisderesidencia:data.get("paisderesidencia"),
+                    departamentoderesidencia:data.get("departamentoderesidencia"),
+                    municipioderesidencia:data.get("municipioderesidencia"),
+                    direccionderesidencia:data.get("direccionderesidencia"),
+                    estadocivil:data.get("estadocivil"),
+                    niveleducativo:data.get("niveleducativo"),
+                    regimendesalud:data.get("regimendesalud"),
+                    eps:data.get("eps"),
+                    contraseña:palabraSecretaEncriptada
+                }
+                var req = new XMLHttpRequest();
+                req.open('POST', 'http://localhost:4567/putUsuario', true);
+                req.body=body;
+                req.send(JSON.stringify(body));
+            }
+
         })
 
     };
@@ -140,7 +161,7 @@ const RegisterUser = () =>{
                     }}
                     />
             <label for="estadocivil">Estado civil</label>
-            <select id="estadocivil" name="estadocivil" class="autocomplete" disabled={disabled}>
+            <select id="estadocivil" name="estadocivil" class="autocomplete" >
                <option value="Casado">Casado</option>
                <option value="Divorciado">Divorciado</option>
                <option value="Soltero">Soltero</option>
@@ -172,7 +193,6 @@ const RegisterUser = () =>{
                         readOnly: noEdita,
                         disabled: noEdita,
                     }}
-                    value={apellidos}
                     />
             <TextField
                     required
