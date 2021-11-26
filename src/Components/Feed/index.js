@@ -1,40 +1,28 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Component } from "react";
+import { MobilePDFReader  } from 'react-read-pdf';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 import "./feed.css";
 
 
-const Feed = () => {
+export default class Feed extends Component{
+
+  render(){
+    let pagina=1;
+    localStorage.setItem("pagina","5")
+    function izquierda() {
+        if(parseInt(localStorage.getItem("pagina"))>1){
+            localStorage.setItem("pagina",(localStorage.getItem("pagina")-1).toString());
+        }
+        console.log(localStorage.getItem("pagina"));
+    }
     return (
-    <div className="carta">
-            Dashboard
-            s
-            a
-            h
-            d
-            d
-            d
-            dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-             dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-              dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-               dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                 dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                  dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                   dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                    dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                     dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                      dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                       dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                         dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                          dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                           dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                             dsssssssssssssssssssssss ssssssssssaaaaaaaaaaaaaaaaaaaaaa    sssssssssssssssssssssssssssssssssss sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-
-
-
-    </div>
-    )
+        <div className="carta">
+            <div className="pdf">
+                <MobilePDFReader   url="http://localhost:3000/CACU.pdf" isShowHeader={false} scale={1.5}/>
+            </div>
+        </div>)
+  }
 }
-
-export default Feed

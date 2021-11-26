@@ -9,6 +9,7 @@ import { Users } from "../../testData";
 import Swal from "sweetalert2";
 import { useHistory } from 'react-router-dom';
 import Navbar from  '../../Components/Navigbar';
+import CrearVacuna from  '../../Components/CrearVacuna';
 import './dashboard.css';
 
 const ResidentDashboard = () => {
@@ -39,12 +40,18 @@ const ResidentDashboard = () => {
     },[]);
     const switchSection = (param) =>{
         switch(param) {
-            case 'crearUsuario':
+            case 'editarUsuario':
               localStorage.setItem('ubicacion','Editar usuario');
               return <RegisterUser/>;
             case 'Feed':
               localStorage.setItem('ubicacion','Información de cancer de cuello uterino');
               return <Feed/>;
+            case 'Crear doctor':
+              localStorage.setItem('ubicacion','Crear doctor');
+              return <RegisterUser/>;
+            case 'Crear vacuna':
+              localStorage.setItem('ubicacion','Crear vacuna');
+              return <CrearVacuna/>;
             case 'Home':
               console.log("/")
               history.push("/");

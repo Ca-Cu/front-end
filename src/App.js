@@ -8,6 +8,7 @@ import PacienteDashBoard from './pages/Dashboard';
 import Login from './pages/login';
 import Register from './pages/register';
 import RegisterUserAWS from './Components/RegisterUserAWS';
+import Vacunacion from './Components/Vacunacion';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path='/RegisterAWS'>
           <RegisterUserAWS/>
+        </Route>
+        <Route exact path='/Vacunacion/'>
+          <Vacunacion/>
         </Route>
         <Route exact path='*'>
           <Home/>

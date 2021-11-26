@@ -2,7 +2,6 @@ import Leftbar from '../../Components/Leftbar';
 import Feed from '../../Components/Feed';
 import RegisterUser from  '../../Components/RegisterUser';
 import Rightbar from '../../Components/Rightbar';
-import DropForm from '../../Components/Conjuntos/DropForm';
 import React,{useState,useEffect,useRef} from 'react'
 import { Users } from "../../testData";
 import './admin.css';

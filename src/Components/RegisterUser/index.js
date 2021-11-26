@@ -20,8 +20,8 @@ import Swal from "sweetalert2";
 const bcrypt = require("bcryptjs");
 const rondas = 15;
 const RegisterUser = () =>{
-    var noEdita;
-    var disabled;
+    var noEdita=false;
+    var disabled=false;
     var tdoc=""
     var documento=""
     var estadocivil=""
@@ -42,15 +42,13 @@ const RegisterUser = () =>{
     var password="";
     console.log((window.location.href).split("/")[3]);
 
-    if((window.location.href).split("/")[3]!='Dashboard'){
+    if((window.location.href).split("/")[3]=='Register'){
         localStorage.removeItem('id');
         localStorage.removeItem('nombres');
         localStorage.removeItem('apellidos');
         localStorage.removeItem('tipousuario');
         localStorage.removeItem('correo');
-        noEdita=false;
-        disabled=false;
-    }else if((window.location.href).split("/")[3]=='Dashboard'){
+    }else if(localStorage.getItem('ubicacion')=='Editar usuario'){
         var url = 'http://localhost:4567/getUsuarioById?id='+localStorage.getItem('id');
         axios.get(url, {
             responseType: "json",
@@ -79,7 +77,13 @@ const RegisterUser = () =>{
         var d = new Date();
         bcrypt.hash(data.get("password"), rondas, (err, palabraSecretaEncriptada) => {
             body={}
-            if((window.location.href).split("/")[3]!='Dashboard'){
+            if((window.location.href).split("/")[3]=='Register' || localStorage.getItem('ubicacion')=='Crear doctor'){
+                var TipoUsuario;
+                if((window.location.href).split("/")[3]=='Register'){
+                    TipoUsuario="Paciente";
+                }else{
+                    TipoUsuario="Doctor";
+                }
                 body={
                     tdoc:data.get("tdoc"),
                     ndoc:data.get("ndoc"),
@@ -101,19 +105,24 @@ const RegisterUser = () =>{
                     eps:data.get("eps"),
                     correo:data.get("email"),
                     contraseña:palabraSecretaEncriptada,
-                    tipousuario:"Paciente"
+                    tipousuario:TipoUsuario
                 }
                 var req = new XMLHttpRequest();
                 req.open('POST', 'http://localhost:4567/insertUsuario', true);
                 req.body=body;
                 req.send(JSON.stringify(body));
-                e.preventDefault();
-                let redirect =''
-                redirect='/'
-                console.log(redirect)
-                history.push(redirect);
+                Swal.fire("Succes", "Usuario creado exitosamente", "success").then(()=>{
+                    if(TipoUsuario=="Paciente"){
+                        e.preventDefault();
+                        let redirect =''
+                        redirect='/'
+                        console.log(redirect)
+                        history.push(redirect);
+                    }
+                });
+
             }
-            else if((window.location.href).split("/")[3]=='Dashboard'){
+            else if(localStorage.getItem('ubicacion')=='Editar usuario'){
                 body={
                     id:localStorage.getItem("id"),
                     paisderesidencia:data.get("paisderesidencia"),
