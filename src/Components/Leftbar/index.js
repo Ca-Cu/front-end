@@ -118,9 +118,9 @@ export default function Leftbar({changeSection}) {
                 </ListItemButton>
                 <Collapse in={openFor} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                      <ListItemButton name="Vacunacion" className="Vacunacion" onClick={changeSection('crearUsuario') } sx={{ pl: 4 }}>
-                        <ListItemIcon><Servicios className="sidebarIcon"/> </ListItemIcon>
-                        <ListItemText>Vacunacion</ListItemText>
+                      <ListItemButton name="Formulariovacuna" className="Vacunacion" onClick={changeSection('Formulario vacuna') } sx={{ pl: 4 }}>
+                        <ListItemIcon><NuevoDoctor className="sidebarIcon"/> </ListItemIcon>
+                        <ListItemText>Registro vacunas</ListItemText>
                       </ListItemButton>
                     </List>
                 </Collapse>

@@ -54,11 +54,8 @@ const RegisterUser = () =>{
             responseType: "json",
         }).then((response) => {
             console.log(response.data);
-            apellidos=response.data["apellidos"]
             console.log(apellidos);
-
         });
-
         noEdita=true;
         disabled="disabled";
     }

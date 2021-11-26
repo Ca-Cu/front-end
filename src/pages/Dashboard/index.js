@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { useHistory } from 'react-router-dom';
 import Navbar from  '../../Components/Navigbar';
 import CrearVacuna from  '../../Components/CrearVacuna';
+import Formulariovacuna from  '../../Components/Vacunacion';
 import './dashboard.css';
 
 const ResidentDashboard = () => {
@@ -52,6 +53,9 @@ const ResidentDashboard = () => {
             case 'Crear vacuna':
               localStorage.setItem('ubicacion','Crear vacuna');
               return <CrearVacuna/>;
+            case 'Formulario vacuna':
+              localStorage.setItem('ubicacion','Registro vacuna');
+              return <Formulariovacuna/>;
             case 'Home':
               console.log("/")
               history.push("/");
