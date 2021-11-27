@@ -15,7 +15,6 @@ const Navbar = () => {
                 <UpperSocialMedia>
                     <UpperSocialMediaWrap>
                         <UpperSocialLogo >{localStorage.getItem('ubicacion')}</UpperSocialLogo>
-
                     </UpperSocialMediaWrap>
                 </UpperSocialMedia>
             </UpperWrap>

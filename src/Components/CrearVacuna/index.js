@@ -16,6 +16,7 @@ import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import './CrearVacuna.css';
 import Swal from "sweetalert2";
+import Navbar from '../Navigbar';
 
 const bcrypt = require("bcryptjs");
 const rondas = 15;
@@ -45,9 +46,9 @@ const CrearVacuna = () =>{
 
     return (
         <div className="RegisterComponent">
+        <Navbar/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="cardVacuna">
            <Typography variant="h4" align="center" component="h1" gutterBottom></Typography>
-
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
 
             <TextField

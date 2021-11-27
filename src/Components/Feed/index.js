@@ -3,7 +3,7 @@ import { MobilePDFReader  } from 'react-read-pdf';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import Navbar from '../../Components/Navigbar'
 import "./feed.css";
 
 
@@ -19,10 +19,13 @@ export default class Feed extends Component{
         console.log(localStorage.getItem("pagina"));
     }
     return (
-        <div className="carta">
+        <div>
+            <Navbar/>
+        <div className="carta">      
             <div className="pdf">
                 <MobilePDFReader   url="http://localhost:3000/CACU.pdf" isShowHeader={false} scale={1.5}/>
             </div>
-        </div>)
-  }
+        </div>
+        </div>
+    )}
 }

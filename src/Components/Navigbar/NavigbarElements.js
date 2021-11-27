@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export const UpperContainer = styled.div`
     background: #057878;
-    height:100%;
+    z-index:5;
 `;
 
 export const UpperWrap = styled.div`
@@ -13,11 +13,13 @@ export const UpperWrap = styled.div`
     align-items: center;
     max-width: 1000px;
     margin: 0 auto;
+    margin-left:20px;
 `;
 
 export const  UpperSocialMedia = styled.div`
     max-width: 1500px;
     width: 100%;
+    margin-left:20px;
 `;
 
 export const UpperSocialMediaWrap = styled.div`
@@ -29,15 +31,15 @@ export const UpperSocialMediaWrap = styled.div`
     @media screen and (max-width: 520px){
         flex-direction: column;
     }
+    margin-left:20px;
 `;
 
 export const UpperSocialLogo = styled.big`
     color: #fff;
-    justify-self: start;
+    text-align: center;
     text-decoration: none;
     font-size: 1.5 rem;
-    display:flex;
-    align-items: center;
     margin-bottom: 16px;
     font-weight: bold;
+    margin-left:20px;
 `;

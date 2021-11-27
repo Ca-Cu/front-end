@@ -66,21 +66,10 @@ const ResidentDashboard = () => {
      }
 
     return (
-        <div>
+        <div className="WeapperresidentContainer">
             <div className="residentContainer">
-                <div className="lateral">
-                    <Leftbar changeSection={changeSection}/>
-                </div>
-                <div >
-                    <div className="superior">
-                        <Navbar/>
-                    </div>
-                    <div className="padre">
-                        <div className="estado">
-                            {switchSection(section)}
-                        </div>
-                    </div>
-                </div>
+                <Leftbar changeSection={changeSection}/>
+                {switchSection(section)}
             </div>
             <div>
                 <Footer/>

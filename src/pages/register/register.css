@@ -15,7 +15,7 @@
     justify-content: center;
     position: relative;
     z-index:1;
-
+    align-items: center;
 }
 .HeroContainer:before{
     background: #e0dce0;
