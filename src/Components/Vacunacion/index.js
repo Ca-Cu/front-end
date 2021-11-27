@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect, useCallback} from 'react'
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,16 +16,32 @@ import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import './vacunacion.css';
 import Swal from "sweetalert2";
+import Navbar from '../Navigbar';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const Formulariovacuna = () =>{
+    const [datas,setData] = useState([]);
+    const [tipoDosis,setTipoDosis] = useState();
+    const toggleTipo=(idTipo)=>{
+        setTipoDosis(idTipo)
+    }   
+    const fetchData = useCallback(async () => {
+        var url = 'http://localhost:4567/getTiposVacunasVPH';
+        await axios.get(url
+        )
+        .then( (res) =>{  
+            setData(res.data)
 
-    var url = 'http://localhost:4567/getTiposVacunasVPH';
-    axios.get(url, {
-        responseType: "json",
-    }).then((response) => {
-        console.log(response.data);
-
-    });
+        }).catch(
+            e =>{console.log("Error: :c "+e)}
+        )
+        },[])
+    useEffect(()=>{
+        fetchData()
+    },[fetchData])
     const handleChange = e => {
         const {name, value } = e.target;
     };
@@ -37,12 +53,14 @@ const Formulariovacuna = () =>{
         let body={}
         e.preventDefault();
         const data = new FormData(e.currentTarget);
+        console.log(data);
         var d = new Date();
         body={
             idPaciente:localStorage.getItem("id"),
-            idTipo:data.get("tipoDosis"),
+            idTipo:tipoDosis,
             nDosis:data.get("numeroDosis")
         }
+        console.log(body)
         var req = new XMLHttpRequest();
         req.open('POST', 'http://localhost:4567/insertPrevencionPrimaria', true);
         req.body=body;
@@ -52,16 +70,29 @@ const Formulariovacuna = () =>{
 
 
     return (
-        <div className="RegisterComponent">
+        <div className="RegisterComponent_vacuna">
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} className="cardVacuna">
            <Typography variant="h4" align="center" component="h1" gutterBottom></Typography>
            <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
-           <label for="tdoc">Tipo de dosis</label>
-             <select id="tipoDosis" name="tipoDosis" class="autocomplete" >
-               <option value="C.C">C.C</option>
-               <option value="C.E">C.E</option>
-               <option value="T.I">T.I</option>
-             </select>
+           <FormControl style={{minWidth: 150}}>
+            <InputLabel id="simple-select-label">Tipo de Dosis</InputLabel>
+            <Select
+                required
+                labelId="tipoDosis"
+                id="tipoDosis"
+                helperText="Tipo de Dosis"
+                >
+                    {
+                        datas.map((element)=>{
+                            return(
+                            <MenuItem key={element.id} value={element.id}
+                            onClick= {(e)=>{toggleTipo(element.id)}}
+                            >{element.nombre}</MenuItem>
+                            )
+                        })
+                    }
+            </Select>
+            </FormControl>
             </Stack>
             <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
