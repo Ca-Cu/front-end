@@ -173,7 +173,6 @@ const RegisterUser = () =>{
                     required={!noEdita}
                     id="ndoc"
                     name="ndoc"
-                    helperText="numero de Documento"
                     variant="outlined"
                     type="number"
                     disabled={noEdita}
@@ -200,7 +199,7 @@ const RegisterUser = () =>{
             </Select>
             </FormControl>
              </Stack>
-            <br/>
+             <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" >
             <TextField
                     required
@@ -238,7 +237,6 @@ const RegisterUser = () =>{
                     size="small"
                     />
             </Stack>
-            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -274,7 +272,6 @@ const RegisterUser = () =>{
                     onChange={togglecurrent}
                     />
             </Stack>
-            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                     required
@@ -310,7 +307,6 @@ const RegisterUser = () =>{
                     focused={noEdita}
                     />
             </Stack>
-            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
             <TextField
                 required
@@ -346,7 +342,6 @@ const RegisterUser = () =>{
                 focused={noEdita}
                 />
             </Stack>
-            <br/>
             <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
 
             <TextField
@@ -365,21 +360,6 @@ const RegisterUser = () =>{
                 <div>
                 <TextField
                 required
-                id="fechadenacimiento"
-                name="fechadenacimiento"
-                type="date"
-                variant="outlined"
-                disabled={noEdita}
-                onChange={togglecurrent}
-                />
-                </div>
-                :<div></div>
-            }
-            {
-                (!noEdita)?
-                <div>
-            <TextField
-                required
                 id="contraseña"
                 name="contraseña"
                 label="contraseña"
@@ -387,6 +367,22 @@ const RegisterUser = () =>{
                 type="password"
                 size="small"
                 helperText="contraseña"
+                onChange={togglecurrent}
+                />
+
+                </div>
+                :<div></div>
+            }
+            {
+                (!noEdita)?
+                <div>
+                <TextField
+                required
+                id="fechadenacimiento"
+                name="fechadenacimiento"
+                type="date"
+                variant="outlined"
+                disabled={noEdita}
                 onChange={togglecurrent}
                 />
                 </div>
