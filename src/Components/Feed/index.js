@@ -21,7 +21,7 @@ export default class Feed extends Component{
     return (
         <div className="carta">
             <div className="pdf">
-                <MobilePDFReader   url= {window.$pdf}"/CACU.pdf" isShowHeader={false} scale={1.5}/>
+                <MobilePDFReader   url= {window.$pdf} isShowHeader={false} scale={1.5}/>
             </div>
         </div>)
   }
