@@ -29,7 +29,7 @@ const Formulariovacuna = () =>{
         setTipoDosis(idTipo)
     }   
     const fetchData = useCallback(async () => {
-        var url = 'http://localhost:4567/getTiposVacunasVPH';
+        var url = window.$url+'/getTiposVacunasVPH';
         await axios.get(url
         )
         .then( (res) =>{  
@@ -62,7 +62,7 @@ const Formulariovacuna = () =>{
         }
         console.log(body)
         var req = new XMLHttpRequest();
-        req.open('POST', 'http://localhost:4567/insertPrevencionPrimaria', true);
+        req.open('POST', window.$url+'/insertPrevencionPrimaria', true);
         req.body=body;
         req.send(JSON.stringify(body));
         Swal.fire("Succes", "Vacunación registrada", "success");

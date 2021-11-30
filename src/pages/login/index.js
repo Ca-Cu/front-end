@@ -57,7 +57,7 @@ const Login=()=>{
         console.log(localStorage.getItem('asasa'));
         e.preventDefault();
         const data = new FormData(e.currentTarget);
-        var url = 'http://localhost:4567/login?correo='+data.get("user");
+        var url = window.$url+'/login?correo='+data.get("user");
         axios.get(url, {
             responseType: "json",
         }).then((response) => {

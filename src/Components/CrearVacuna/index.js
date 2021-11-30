@@ -35,7 +35,7 @@ const CrearVacuna = () =>{
             nombre:data.get("vacuna")
         }
         var req = new XMLHttpRequest();
-        req.open('POST', 'http://localhost:4567/insertTipoVacunaVPH', true);
+        req.open('POST', window.$url+'/insertTipoVacunaVPH', true);
         req.body=body;
         req.send(JSON.stringify(body));
         Swal.fire("Succes", "Vacuna creada exitosamente", "success");

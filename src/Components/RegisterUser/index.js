@@ -42,7 +42,7 @@ const RegisterUser = () =>{
         }else if(localStorage.getItem('ubicacion')=='Editar usuario'){
             setNoEdita(true);
             setDisabled("disabled");
-            var url = 'http://localhost:4567/getUsuarioById?id='+localStorage.getItem('id');
+            var url = window.$url+'/getUsuarioById?id='+localStorage.getItem('id');
             await axios.get(url
             )
             .then( (res) =>{  
@@ -60,7 +60,7 @@ const RegisterUser = () =>{
     useEffect(()=>{
         fetchData()
     },[fetchData])
-    var url='http://localhost:4567/insertUsuario/';
+    var url=window.$url+'/insertUsuario/';
     const handleChange = e => {
         const {name, value } = e.target;
     };
@@ -110,7 +110,7 @@ const RegisterUser = () =>{
                 }
                 console.log(body);
                 var req = new XMLHttpRequest();
-                req.open('POST', 'http://localhost:4567/insertUsuario', true);
+                req.open('POST', window.$url+'/insertUsuario', true);
                 req.body=body;
                 req.send(JSON.stringify(body));
                 Swal.fire("Succes", "Usuario creado exitosamente", "success").then(()=>{
@@ -138,7 +138,7 @@ const RegisterUser = () =>{
                 }
                 console.log(body)
                 var req = new XMLHttpRequest();
-                req.open('POST', 'http://localhost:4567/putUsuario', true);
+                req.open('POST', window.$url+'/putUsuario', true);
                 req.body=body;
                 req.send(JSON.stringify(body));
             }
